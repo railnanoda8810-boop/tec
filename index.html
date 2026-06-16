@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技術科：3年1学期期末テスト 直前総仕上げシート</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --accent-color: #e53e3e;
+            --success-color: #2f855a;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--primary-color);
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* まとめカードのレイアウト */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media(min-width: 768px) {
+            .summary-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .badge.blue { background: var(--secondary-color); }
+
+        ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* インタラクティブ問題集のレイアウト */
+        .quiz-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            background: #f7fafc;
+            border: 1px solid #edf2f7;
+            padding: 12px;
+            border-radius: 6px;
+            cursor:pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+        }
+
+        .option-label:hover {
+            background: #edf2f7;
+            border-color: #cbd5e0;
+        }
+
+        .option-label input[type="radio"] {
+            margin-right: 12px;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--secondary-color);
+        }
+
+        /* 結果表示エリア */
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+            font-size: 13px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .feedback.correct {
+            background-color: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #38a169;
+        }
+
+        .feedback.incorrect {
+            background-color: #fed7d7;
+            color: #742a2a;
+            border: 1px solid #e53e3e;
+        }
+
+        .feedback-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #a0aec0;
+            font-size: 12px;
+            background: #edf2f7;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>技術科：第3学年 1学期期末テスト</h1>
+        <p>当日朝用 直前総仕上げチェック ＆ 復習問題集（全10問）</p>
+    </div>
+
+    <div class="container">
+        
+        <div class="section-title">💡 当日朝の脳内ローディング：重要ポイントまとめ</div>
+        
+        <div class="summary-grid">
+            <div class="card">
+                <span class="badge">実技・手順</span>
+                <h3>① はんだづけの鉄則</h3>
+                <ul>
+                    <li>目指す仕上がりは綺麗な<span class="highlight">富士山型</span>。穴や欠けがないように接合する。</li>
+                    <li>こて先を寝かせてランドに当て、まず<span class="highlight">約3秒間温める</span>。</li>
+                    <li>はんだを流し込んだら、必ず先に<span class="highlight">はんだを離し</span>、その直後にこてを離す。</li>
+                    <li>こて先が黒・茶色に汚れているときは、濡らしたスポンジできれいにする。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="badge">原理・計算</span>
+                <h3>② エネルギー変換効率</h3>
+                <ul>
+                    <li>変換効率 ＝ <span class="highlight">(利用されるエネルギー ÷ 供給されるエネルギー) × 100</span></li>
+                    <li>変換時には必ず目的外の熱などの「エネルギー損失」が出る。</li>
+                    <li><span class="highlight">水力発電（約80%）</span>が最も変換効率が高い。</li>
+                    <li>電磁誘導：コイルと磁石を動かして電気を発生させる仕組み。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="badge blue">送電・配電</span>
+                <h3>③ 交流と高電圧送電の論理</h3>
+                <ul>
+                    <li>遠くへ送る時は、送電線の熱ロスを防ぐために<span class="highlight">超高電圧</span>にして電流を小さくする。</li>
+                    <li>直流（DC）ではなく交流（AC）を使うのは、変圧器で<span class="highlight">変圧が簡単</span>だから。</li>
+                    <li>送電の流れ：発電所 ➔ 変電所（上げる） ➔ 変電所（下げる） ➔ <span class="highlight">柱上変圧器</span>（電柱で100V/200Vに落とす） ➔ 家庭。</li>
+                    <li>周波数：東日本は<span class="highlight">50Hz</span>、西日本は<span class="highlight">60Hz</span>。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="badge blue">安全・事故</span>
+                <h3>④ 電気事故と安全装置</h3>
+                <ul>
+                    <li><span class="highlight">短絡（ショート）</span>：負荷を通らず直に接触。抵抗がほぼゼロになり<span class="highlight">異常な大電流</span>が流れる現象。➔ <span class="highlight">配線用遮断器</span>が防ぐ。</li>
+                    <li>過負荷（使いすぎ）：定格値を超えて電流が流れる。➔ <span class="highlight">配線用遮断器</span>が防ぐ。</li>
+                    <li>漏電：絶縁不良で外に電気が漏れる。➔ <span class="highlight">漏電遮断器</span>が遮断し、<span class="highlight">アース線</span>が電気を地面に逃がして感電を防ぐ。</li>
+                    <li>トラッキング現象：プラグの隙間の<span class="highlight">ほこりと湿気</span>で発火。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-title">📝 アウトプット確認クイズ（全10問）</div>
+        <p style="font-size: 13px; color: #718096; margin-bottom: 20px;">※選択肢をタップすると、その場で即座に採点と論理的な解説が表示されます。間違えたら解説を読み込んで復讐しましょう！</p>
+
+        <div id="quiz-box"></div>
+
+    </div>
+
+    <div class="footer">
+        技術科 期末テスト対策シート | 自分の力を信じて、落ち着いて全力を尽くしてきてください！
+    </div>
+
+    <script>
+        // 問題データ
+        const quizData = [
+            {
+                q: "第1問：はんだづけを行う際、一番最初に行うべき正しい動作はどれか。",
+                options: [
+                    "はんだをこて先に当てて溶かし、ランドに塗りつける。",
+                    "こて先を寝かせてランドに当て、約3秒間温める。",
+                    "ニッパーではんだを細かく切ってランドの上に並べておく。"
+                ],
+                correct: 1,
+                expl: "正解は2番目！接合部（ランドと部品の足）をあらかじめしっかり温めておかないと、はんだがなじまずに強度の低い接合になってしまいます。"
+            },
+            {
+                q: "第2問：はんだづけを終えてこてとはんだを離す際の、正しい順番はどれか。",
+                options: [
+                    "はんだとはんだごてを完全に同時に離す。",
+                    "先にはんだごてを離し、はんだが固まるのを待ってからはんだを離す。",
+                    "先にはんだを離し、その直後にはんだごてを離す。"
+                ],
+                correct: 2,
+                expl: "正解は3番目！こてを先に離してしまうとはんだが余分に残り、綺麗な富士山型になりません。必ず「はんだ ➔ こて」の順に離します。"
+            },
+            {
+                q: "第3問：機器が消費する「電力 P [W]」を求める正しい公式はどれか。",
+                options: [
+                    "電力 [W] ＝ 電圧 [V] × 電流 [A]",
+                    "電力 [W] ＝ 電圧 [V] ÷ 電流 [A]",
+                    "電力 [W] ＝ 電流 [A] ÷ 抵抗 [Ω]"
+                ],
+                correct: 0,
+                expl: "正解は1番目！電力(W)は電圧(V)と電流(A)の掛け算で求められます。100Vで10A流れるトースターなら1000Wです。"
+            },
+            {
+                q: "第4問：次の発電方式のうち、エネルギー変換効率が「約80%」と最も高いものはどれか。",
+                options: [
+                    "火力発電（石炭・石油）",
+                    "水力発電",
+                    "太陽光発電"
+                ],
+                correct: 1,
+                expl: "正解は2番目！水力発電は位置エネルギーを運動エネルギーを経て電気へと効率よく変換でき、約80%という高い変換効率を誇ります。"
+            },
+            {
+                q: "第5問：日本の送電ネットワークにおいて、直流（DC）ではなく主に「交流（AC）」が使われている最大の理由はどれか。",
+                options: [
+                    "交流のほうが、バッテリーや乾電池に電気を貯めやすいから。",
+                    "交流のほうが、変圧器を使って簡単に電圧を上げ下げ（変圧）できるから。",
+                    "交流のほうが、電気が電線を流れる速度が圧倒的に速いから。"
+                ],
+                correct: 1,
+                expl: "正解は2番目！送電ロスを減らすためには途中で電圧を変更することが不可欠であり、変圧が極めて容易な「交流（AC）」が送電システムの主流となっています。"
+            },
+            {
+                q: "第6問：発電所から家庭に向けて送電する際、わざわざ「超高電圧」に電圧を上げて送り出す論理的な理由はどれか。",
+                options: [
+                    "電圧を高くして電流を小さくすることで、送電線の抵抗による熱（エネルギー損失）を減らすため。",
+                    "高い電圧の圧力によって、家庭の家電製品を一斉に急速起動させるため。",
+                    "高電圧にすると、送電線にほこりがたまるのを防ぎトラッキング現象を予防できるため。"
+                ],
+                correct: 0,
+                expl: "正解は1番目！電圧を上げると電流を小さくできます。電線の発熱（ジュール熱）は電流の大きさに比例して増えるため、電流を小さくすることが送電ロスを減らす最大の鍵です。"
+            },
+            {
+                q: "第7問：送電の最終段階において、電柱の上に設置され、高圧の電気を家庭用の100Vまたは200Vに引き下げる役割を持つ機器の名称はどれか。",
+                options: [
+                    "超高圧変電所",
+                    "配線用遮断器",
+                    "柱上変圧器（ちゅうじょうへんあつき）"
+                ],
+                correct: 2,
+                expl: "正解は3番目！電柱の上部にあるグレーのバケツのような形の機器が「柱上変圧器」です。ここでようやく安全な家庭用電圧に落とされます。"
+            },
+            {
+                q: "第8問：コードの劣化などが原因で、負荷を通らずにプラスとマイナスの電線が直接接触し、異常な大電流が流れる現象を何というか。",
+                options: [
+                    "短絡（ショート）",
+                    "漏電",
+                    "トラッキング現象"
+                ],
+                correct: 0,
+                expl: "正解は1番目！抵抗を通らない「近道」ができるため、オームの法則（電流＝電圧÷抵抗）により抵抗がほぼゼロになり、火災の原因となる異常な大電流が流れます。"
+            },
+            {
+                q: "第9問：前問の「短絡（ショート）」や、電気の「使いすぎ（過負荷）」によって異常な過電流が流れた際、瞬時に作動して回路を遮断する安全装置はどれか。",
+                options: [
+                    "アース線",
+                    "配線用遮断器（ブレーカー）",
+                    "漏電遮断器"
+                ],
+                correct: 1,
+                expl: "正解は2番目！使いすぎやショートによる「過電流」から屋内配線を守り、火災を防ぐ主役は「配線用遮断器」です。アース線や漏電遮断器は「漏電」の際に対策となる装置です。"
+            },
+            {
+                q: "第10問：長期間コンセントを差しっぱなしにしたプラグとコンセントの隙間に、ほこりと湿気がたまることで漏電し、発火に至る現象を何というか。",
+                options: [
+                    "電磁誘導現象",
+                    "トラッキング現象",
+                    "ジュール熱損失"
+                ],
+                correct: 1,
+                expl: "正解は2番目！ほこりが湿気を吸うことで電気が流れる道（トラック）ができてしまい発火します。冷蔵庫やテレビの裏など、掃除しにくい場所で多発するため注意が必要です。"
+            }
+        ];
+
+        // クイズUIの自動生成
+        const quizBox = document.getElementById('quiz-box');
+        
+        quizData.forEach((data, qIdx) => {
+            const quizItem = document.createElement('div');
+            quizItem.className = 'quiz-item';
+            
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'quiz-question';
+            questionDiv.innerText = data.q;
+            quizItem.appendChild(questionDiv);
+            
+            const optionsContainer = document.createElement('div');
+            optionsContainer.className = 'options-container';
+            
+            data.options.forEach((opt, oIdx) => {
+                const label = document.createElement('label');
+                label.className = 'option-label';
+                
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = `quiz-${qIdx}`;
+                radio.value = oIdx;
+                
+                radio.addEventListener('change', () => checkAnswer(qIdx, oIdx));
+                
+                label.appendChild(radio);
+                label.appendChild(document.createTextNode(opt));
+                optionsContainer.appendChild(label);
+            });
+            
+            quizItem.appendChild(optionsContainer);
+            
+            const feedbackDiv = document.createElement('div');
+            feedbackDiv.id = `feedback-${qIdx}`;
+            feedbackDiv.className = 'feedback';
+            quizItem.appendChild(feedbackDiv);
+            
+            quizBox.appendChild(quizItem);
+        });
+
+        // 採点＆フィードバック処理
+        function checkAnswer(qIdx, selectedIdx) {
+            const feedbackDiv = document.getElementById(`feedback-${qIdx}`);
+            const data = quizData[qIdx];
+            
+            // ラジオボタンの操作を一時無効化（誤タップ防止）
+            const radios = document.getElementsByName(`quiz-${qIdx}`);
+            radios.forEach(r => r.disabled = true);
+            
+            if (selectedIdx === data.correct) {
+                feedbackDiv.className = 'feedback correct';
+                feedbackDiv.innerHTML = `<div class="feedback-title">⭕ 正解！</div>${data.expl}`;
+            } else {
+                feedbackDiv.className = 'feedback incorrect';
+                feedbackDiv.innerHTML = `<div class="feedback-title">❌ 残念！</div>${data.expl}`;
+            }
+            
+            feedbackDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
